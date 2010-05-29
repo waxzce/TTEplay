@@ -9,5 +9,6 @@ GET     /                                       Application.index
 GET     /public/                                staticDir:public
 
 *      /admin                                   module:crud
+*       /                                       module:secure
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}

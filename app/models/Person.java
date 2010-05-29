@@ -31,4 +31,8 @@ public class Person extends Model {
     @Required
     @InPast
     public Date dateOfBirth;
+
+    public static Person connect(String username, String password) {
+        return Person.find("login = ? AND password = ?", username, password).first();
+    }
 }
