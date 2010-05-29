@@ -38,4 +38,18 @@ public class Person extends Model {
     public static Person connect(String username, String password) {
         return Person.find("login = ? AND password = ?", username, password).first();
     }
+
+    public Person(String firstName, String lastName, String login, String password, String mail, Date dateOfBirth) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.login = login;
+        this.password = password;
+        this.mail = mail;
+        this.dateOfBirth = dateOfBirth;
+        
+    }
+
+    public Person() {
+    }
+    
 }
