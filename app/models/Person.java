@@ -6,6 +6,7 @@ package models;
 
 import java.util.Date;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import play.data.validation.*;
 import play.db.jpa.Model;
 
@@ -31,6 +32,8 @@ public class Person extends Model {
     @Required
     @InPast
     public Date dateOfBirth;
+    @ManyToOne
+    public Promo promo;
 
     public static Person connect(String username, String password) {
         return Person.find("login = ? AND password = ?", username, password).first();
