@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 public class Staff extends Person {
 
     @ManyToOne
-    Campus campus;
+    public Campus campus;
 
 
 }

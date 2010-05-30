@@ -40,7 +40,7 @@ public class Bootstrap extends Job {
             p.mail = "waxzce@gmail.com";
             p.promo = po;
             p.save();
-            /// user waxzce
+            /// user farof
             Student p2 = new Student();
             p2.dateOfBirth = new Date(70, 0, 1);
             p2.firstName = "Mathieu";
@@ -50,6 +50,25 @@ public class Bootstrap extends Job {
             p2.mail = "gfarof@gmail.com";
             p2.promo = po;
             p2.save();
+            /// user pherve
+            Staff s = new Staff();
+            s.dateOfBirth = new Date(70, 0, 1);
+            s.firstName = "Philippe";
+            s.lastName = "HERVE";
+            s.login = "pherve";
+            s.password = "azerty";
+            s.mail = "pherve@gmail.com";
+            s.campus = c;
+            s.save();
+            /// user gpougne
+            GlobalStaff gs = new GlobalStaff();
+            gs.dateOfBirth = new Date(70, 0, 1);
+            gs.firstName = "Gaetan";
+            gs.lastName = "POUGNE";
+            gs.login = "gpougne";
+            gs.password = "azerty";
+            gs.mail = "gpougne@gmail.com";
+            gs.save();
         }
     }
 }
