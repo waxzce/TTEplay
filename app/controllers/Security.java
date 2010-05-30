@@ -8,6 +8,7 @@ package controllers;
  *
  * @author waxzce
  */
+import models.person.Person;
 import models.*;
 
 public class Security extends Secure.Security {
