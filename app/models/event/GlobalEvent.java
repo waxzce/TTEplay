@@ -21,5 +21,5 @@ public class GlobalEvent extends Event {
     public String name;
     @Lob
     public String description;
-    public Boolean global = true;
+    private Boolean global = true;
 }
