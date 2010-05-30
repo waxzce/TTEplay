@@ -18,11 +18,15 @@ import play.db.jpa.Model;
  */
 @Entity
 public abstract class Event extends Model {
-
+/*
     @Columns(columns = {
         @Column(name = "startTime"),
         @Column(name = "endTime")})
     @Type(type = "org.joda.time.contrib.hibernate.PersistentInterval")
     public Interval interval;
-   
+  */
+    public Long start;
+    public Long end;
+
+
 }

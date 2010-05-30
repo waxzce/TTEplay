@@ -18,7 +18,11 @@ import play.jobs.*;
 import play.test.*;
 
 import models.*;
+import models.event.CampusEvent;
+import models.event.ExamEvent;
 import models.event.GlobalEvent;
+import models.event.LessonEvent;
+import models.event.PersoEvent;
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
 
@@ -80,10 +84,44 @@ public class Bootstrap extends Job {
 
             //global event;
             GlobalEvent ge = new GlobalEvent();
-            ge.name = "a test";
+            ge.name = "a GlobalEvent";
             ge.description = "big test";
-            ge.interval = new Interval(new DateTime(), new DateTime((new DateTime()).getMillis() + (3600 * 1000)));
+            //    ge.interval = new Interval(new DateTime(), new DateTime((new DateTime()).getMillis() + (3600 * 1000)));
+            ge.start = (new DateTime()).getMillis();
+            ge.end = new DateTime((new DateTime()).getMillis() + (3600 * 1000)).getMillis();
             ge.save();
+            //campus event;
+            CampusEvent ce = new CampusEvent();
+            ce.campus = c;
+            ce.name = "a CampusEvent";
+            ce.description = "big test";
+            ce.start = (new DateTime()).getMillis();
+            ce.end = new DateTime((new DateTime()).getMillis() + (3600 * 1000)).getMillis();
+            ce.save();
+            //exam event;
+            ExamEvent ee = new ExamEvent();
+            ee.promo = po;
+            ee.name = "a ExamEvent";
+            ee.description = "big test";
+            ee.start = (new DateTime()).getMillis();
+            ee.end = new DateTime((new DateTime()).getMillis() + (3600 * 1000)).getMillis();
+            ee.save();
+            //lesson event;
+            LessonEvent le = new LessonEvent();
+            le.promo = po;
+            le.name = "a LessonEvent";
+            le.description = "big test";
+            le.start = (new DateTime()).getMillis();
+            le.end = new DateTime((new DateTime()).getMillis() + (3600 * 1000)).getMillis();
+            le.save();
+            //perso event;
+            PersoEvent per = new PersoEvent();
+            per.person = p;
+            per.name = "a PersoEvent";
+            per.description = "big test";
+            per.start = (new DateTime()).getMillis();
+            per.end = new DateTime((new DateTime()).getMillis() + (3600 * 1000)).getMillis();
+            per.save();
         }
     }
 }
