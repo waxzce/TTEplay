@@ -8,6 +8,10 @@ package job;
  *
  * @author waxzce
  */
+import models.person.Person;
+import models.person.GlobalStaff;
+import models.person.Staff;
+import models.person.Student;
 import java.util.Date;
 import play.*;
 import play.jobs.*;

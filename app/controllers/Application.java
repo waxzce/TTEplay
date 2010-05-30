@@ -1,7 +1,7 @@
 package controllers;
 
 import java.util.Iterator;
-import models.Person;
+import models.person.Person;
 import org.yaml.snakeyaml.Yaml;
 import play.mvc.*;
 
