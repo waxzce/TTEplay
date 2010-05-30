@@ -15,7 +15,7 @@ import play.db.jpa.Model;
  * @author waxzce
  */
 @Entity
-public class Person extends Model {
+public abstract class Person extends Model {
 
     @Required
     public String firstName;
