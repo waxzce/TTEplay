@@ -18,12 +18,16 @@ import play.jobs.*;
 import play.test.*;
 
 import models.*;
+import models.event.GlobalEvent;
+import org.joda.time.DateTime;
+import org.joda.time.Interval;
 
 @OnApplicationStart
 public class Bootstrap extends Job {
 
     public void doJob() {
         // Check if the database is empty
+        Fixtures.deleteAllEntities();
         if (Person.count() == 0) {
             /// nantes campus
             Campus c = new Campus();
@@ -73,6 +77,13 @@ public class Bootstrap extends Job {
             gs.password = "azerty";
             gs.mail = "gpougne@gmail.com";
             gs.save();
+
+            //global event;
+            GlobalEvent ge = new GlobalEvent();
+            ge.name = "a test";
+            ge.description = "big test";
+            ge.interval = new Interval(new DateTime(), new DateTime((new DateTime()).getMillis() + (3600 * 1000)));
+            ge.save();
         }
     }
 }

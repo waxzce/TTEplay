@@ -6,6 +6,7 @@ package models.event;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Transient;
 import org.hibernate.annotations.Columns;
 import org.hibernate.annotations.Type;
 import org.joda.time.Interval;
@@ -23,4 +24,5 @@ public abstract class Event extends Model {
         @Column(name = "endTime")})
     @Type(type = "org.joda.time.contrib.hibernate.PersistentInterval")
     public Interval interval;
+   
 }
