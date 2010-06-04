@@ -37,4 +37,8 @@ public abstract class Person extends Model implements HaveCalendar {
     public static Person connect(String username, String password) {
         return Person.find("login = ? AND password = ?", username, password).first();
     }
+
+    public static Person get(String username) {
+        return Person.find("login = ?", username).first();
+    }
 }
