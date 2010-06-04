@@ -4,9 +4,11 @@
  */
 package models.person;
 
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import models.Campus;
+import models.event.Event;
 
 /**
  *
@@ -17,6 +19,10 @@ public class Staff extends Person {
 
     @ManyToOne
     public Campus campus;
+
+    public List<Event> getCalendar() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
 
 }

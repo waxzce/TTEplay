@@ -4,8 +4,10 @@
  */
 package models.person;
 
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import models.event.Event;
 
 /**
  *
@@ -13,4 +15,8 @@ import javax.persistence.ManyToOne;
  */
 @Entity
 public class GlobalStaff extends Person {
+
+    public List<Event> getCalendar() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }
