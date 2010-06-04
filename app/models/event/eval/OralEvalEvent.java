@@ -9,6 +9,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import models.Campus;
 import models.Promo;
+import models.person.Student;
 import play.data.validation.Required;
 
 /**
@@ -18,8 +19,7 @@ import play.data.validation.Required;
 @Entity
 public class OralEvalEvent extends EvaluationEvent {
 
-   @Required
-   @ManyToOne
-   public Promo promo;
-
+    @Required
+    @ManyToOne
+    public Student student;
 }

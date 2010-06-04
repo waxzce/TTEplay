@@ -19,8 +19,7 @@ import play.data.validation.Required;
 @Entity
 public class ExamEvalEvent extends EvaluationEvent {
 
-   @Required
-   @ManyToOne
-   public Student student;
-
+    @Required
+    @ManyToOne
+    public Promo promo;
 }

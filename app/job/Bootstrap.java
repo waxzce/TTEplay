@@ -106,7 +106,7 @@ public class Bootstrap extends Job {
         ce.save();
         //exam event;
         ExamEvalEvent ee = new ExamEvalEvent();
-        ee.klass = po;
+        ee.promo = pro;
         ee.name = "a ExamEvent";
         ee.description = "big test";
         ee.start = (new DateTime()).getMillis();
