@@ -19,7 +19,5 @@ public class Promo extends Model {
 
     @Required
     public String name;
-    @ManyToOne
-    @Required
-    public Campus campus;
+   
 }
