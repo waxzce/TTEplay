@@ -9,7 +9,11 @@
 	</div>
 
 	<div id="crudListTable">
-		#{crud.table fields:['lastName','login'] /}
+		#{crud.table fields:['lastName','firstName','klass']}
+                #{crud.custom 'klass'}
+                ${object.klass?.name} | ${object.klass?.promo?.name} | ${object.klass?.campus?.name}
+                 #{/crud.custom}
+                #{/crud.table}
 	</div>
 	
 	<div id="crudListPagination">
