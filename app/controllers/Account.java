@@ -14,7 +14,8 @@ public class Account extends Controller {
     }
 
     public static void mycalendar() {
-        List<Event> calendar = Person.get(Security.connected()).getCalendar();
-        render(calendar);
+        Person user = Person.get(Security.connected());
+        List<Event> calendar = user.getCalendar();
+        render(calendar, user);
     }
 }

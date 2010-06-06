@@ -1,5 +1,5 @@
 #{extends 'main.html' /}
-#{set title:'Home' /}
+#{set title:'my calendar' /}
 
 {%
 
@@ -10,3 +10,10 @@ String s = gson.toJson(calendar);
 %}
 
 ${s}
+<h3>${user.firstName}</h3>
+
+<ul>
+#{list items:calendar, as:'event'}
+    <li>${event.start}</li>
+#{/list}
+</ul>
