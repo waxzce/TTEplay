@@ -14,5 +14,7 @@ import models.*;
  * @author waxzce
  */
 @CRUD.For(Location.class)
+@Check("staff")
+@With(Secure.class)
 public class CRUDLocations extends CRUD {
 }

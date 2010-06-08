@@ -15,5 +15,7 @@ import models.*;
  * @author waxzce
  */
 @CRUD.For(GlobalEvent.class)
+@Check("globalstaff")
+@With(Secure.class)
 public class CRUDGlobalEvents extends CRUD {
 }
