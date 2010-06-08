@@ -13,6 +13,24 @@ public class Account extends Controller {
         render(user);
     }
 
+    public static void me() {
+        Person user = Security.get();
+        String profiles = "";
+        if (Security.check("student")) {
+            profiles = "student";
+        }
+        if (Security.check("staff")) {
+            profiles = "staff";
+        }
+        if (Security.check("globalstaff")) {
+            profiles = "globalstaff";
+        }
+        if (Security.check("teacher")) {
+            profiles = "teacher";
+        }
+        render(user, profiles);
+    }
+
     public static void mycalendar() {
         Person user = Person.get(Security.connected());
         List<Event> calendar = user.getCalendar();

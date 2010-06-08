@@ -11,6 +11,7 @@ import models.i.HaveCalendar;
 import play.data.validation.*;
 import play.db.jpa.Model;
 
+
 /**
  *
  * @author waxzce
@@ -41,4 +42,6 @@ public abstract class Person extends Model implements HaveCalendar {
     public static Person get(String username) {
         return Person.find("login = ?", username).first();
     }
+
+    
 }
