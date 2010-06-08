@@ -15,12 +15,27 @@
         <div class="nav">
             <ul>
                 <li><a href="@{Account.mycalendar}">my calendar</a></li>
-            </ul>
-            <ul>
                 <li><a href="@{Account.me}">me</a></li>
-            </ul>
-            <ul>
                 <li><a href="@{Secure.logout}">logout</a></li>
+            </ul>
+            #{if controllers.Security.check("staff")}
+            <ul>
+                <li><a href="@{CRUDStudends.list}">manage Students</a></li>
+                <li><a href="@{CRUDTeachers.list}">manage Teachers</a></li>
+                #{if controllers.Security.check("globalstaff")}
+                <li><a href="@{CRUDStaffs.list}">manage Local Staff</a></li>
+                <li><a href="@{CRUDGlobalStaffs.list}">manage Global Staff</a></li>
+                #{/if}
+            </ul>
+            #{/if}
+            <ul>
+                <li><a href="@{CRUDPersoEvents.list}">manage my own calendar</a></li>
+                #{if controllers.Security.check("globalstaff")}
+                <li><a href="@{CRUDGlobalEvents.list}">manage global events</a></li>
+
+                <li><a href="@{CRUDStaffs.list}">manage Local Staff</a></li>
+                <li><a href="@{CRUDGlobalStaffs.list}">manage Global Staff</a></li>
+                #{/if}
             </ul>
         </div>
         #{doLayout /}
