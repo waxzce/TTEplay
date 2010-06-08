@@ -12,6 +12,17 @@
         #{get 'moreScripts' /}
     </head>
     <body>
+        <div class="nav">
+            <ul>
+                <li><a href="@{Account.mycalendar}">my calendar</a></li>
+            </ul>
+            <ul>
+                <li><a href="@{Account.me}">me</a></li>
+            </ul>
+            <ul>
+                <li><a href="@{Secure.logout}">logout</a></li>
+            </ul>
+        </div>
         #{doLayout /}
     </body>
 </html>

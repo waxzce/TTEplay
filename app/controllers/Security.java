@@ -8,6 +8,7 @@ package controllers;
  *
  * @author waxzce
  */
+import java.net.SecureCacheResponse;
 import models.person.Person;
 import models.*;
 import models.person.GlobalStaff;
@@ -25,14 +26,23 @@ public class Security extends Secure.Security {
         if ("student".equals(profile)) {
             return (get() instanceof Student);
         }
-        if ("staff".equals(profile)) {
+        if ("localstaff".equals(profile)) {
             return (get() instanceof Staff);
+        }
+        if ("staff".equals(profile)) {
+            return ((get() instanceof Staff) || (get() instanceof GlobalStaff));
         }
         if ("teacher".equals(profile)) {
             return (get() instanceof Teacher);
         }
         if ("globalstaff".equals(profile)) {
             return (get() instanceof GlobalStaff);
+        }
+        if (get() instanceof Staff) {
+            Staff staff = (Staff) get();
+            if (("localstaff" + staff.campus.name).equals(profile)) {
+                return true;
+            }
         }
         return false;
     }

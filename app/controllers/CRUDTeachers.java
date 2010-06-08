@@ -15,5 +15,6 @@ import models.*;
  * @author waxzce
  */
 @CRUD.For(Teacher.class)
+@Check("staff")
 public class CRUDTeachers extends CRUD {
 }
