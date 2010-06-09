@@ -7,10 +7,37 @@
         <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/crud.css'}" />
         <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
         #{get 'moreScripts' /}
     </head>
     <body>
+        <div class="nav">
+            <ul>
+                <li><a href="@{Account.mycalendar}">my calendar</a></li>
+                <li><a href="@{Account.me}">me</a></li>
+                <li><a href="@{Secure.logout}">logout</a></li>
+            </ul>
+            #{if controllers.Security.check("staff")}
+            <ul>
+                <li><a href="@{CRUDStudends.list}">manage Students</a></li>
+                <li><a href="@{CRUDTeachers.list}">manage Teachers</a></li>
+                #{if controllers.Security.check("globalstaff")}
+                <li><a href="@{CRUDStaffs.list}">manage Local Staff</a></li>
+                <li><a href="@{CRUDGlobalStaffs.list}">manage Global Staff</a></li>
+                #{/if}
+            </ul>
+            #{/if}
+            <ul>
+                <li><a href="@{CRUDPersoEvents.list}">manage my own calendar</a></li>
+                #{if controllers.Security.check("globalstaff")}
+                <li><a href="@{CRUDGlobalEvents.list}">manage global events</a></li>
+
+                <li><a href="@{CRUDStaffs.list}">manage Local Staff</a></li>
+                <li><a href="@{CRUDGlobalStaffs.list}">manage Global Staff</a></li>
+                #{/if}
+            </ul>
+        </div>
         #{doLayout /}
     </body>
 </html>

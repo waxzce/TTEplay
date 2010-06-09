@@ -19,7 +19,7 @@ import play.test.*;
 
 import models.*;
 import models.event.CampusEvent;
-import models.event.ExamEvent;
+import models.event.eval.ExamEvalEvent;
 import models.event.GlobalEvent;
 import models.event.LessonEvent;
 import models.event.PersoEvent;
@@ -38,9 +38,14 @@ public class Bootstrap extends Job {
         c.name = "Nantes";
         c.save();
         // promo M1
-        Promo po = new Promo();
+        Promo pro = new Promo();
+        pro.name = "M1";
+        pro.save();
+        // promo M1
+        Klass po = new Klass();
         po.campus = c;
-        po.name = "M1";
+        po.promo = pro;
+        po.name = "M1A";
         po.save();
         /// user waxzce
         Student p = new Student();
@@ -50,7 +55,7 @@ public class Bootstrap extends Job {
         p.login = "waxzce";
         p.password = "azerty";
         p.mail = "waxzce@gmail.com";
-        p.promo = po;
+        p.klass = po;
         p.save();
         /// user farof
         Student p2 = new Student();
@@ -60,7 +65,7 @@ public class Bootstrap extends Job {
         p2.login = "farof";
         p2.password = "azerty";
         p2.mail = "gfarof@gmail.com";
-        p2.promo = po;
+        p2.klass = po;
         p2.save();
         /// user pherve
         Staff s = new Staff();
@@ -100,8 +105,8 @@ public class Bootstrap extends Job {
         ce.end = new DateTime((new DateTime()).getMillis() + (3600 * 1000)).getMillis();
         ce.save();
         //exam event;
-        ExamEvent ee = new ExamEvent();
-        ee.promo = po;
+        ExamEvalEvent ee = new ExamEvalEvent();
+        ee.promo = pro;
         ee.name = "a ExamEvent";
         ee.description = "big test";
         ee.start = (new DateTime()).getMillis();
@@ -109,7 +114,7 @@ public class Bootstrap extends Job {
         ee.save();
         //lesson event;
         LessonEvent le = new LessonEvent();
-        le.promo = po;
+        le.klass = po;
         le.name = "a LessonEvent";
         le.description = "big test";
         le.start = (new DateTime()).getMillis();

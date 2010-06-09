@@ -56,7 +56,7 @@ public class Application extends Controller {
         renderJSON(gson.toJson(Event.all().fetch()));
     }
 
-    public static void dumpEventStudentCalendarJSON(Long id) {
+    /*public static void dumpEventStudentCalendarJSON(Long id) {
         Student s = Student.findById(id);
         EntityManager em = JPA.em();
         //  List l = em.createQuery("from CampusEvent ce, ExamEvent ee, GlobalEvent ge, LessonEvent le, PersoEvent pe where ce.campus = :campus").setParameter("campus", s.promo.campus).getResultList();
@@ -71,4 +71,6 @@ public class Application extends Controller {
 
         renderJSON(gson.toJson(l));
     }
+     * */
+     
 }

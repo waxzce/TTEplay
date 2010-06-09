@@ -15,9 +15,14 @@ import play.db.jpa.Model;
  * @author waxzce
  */
 @Entity
-public class Promo extends Model {
+public class Klass extends Model {
 
     @Required
     public String name;
-   
+    @ManyToOne
+    @Required
+    public Promo promo;
+    @ManyToOne
+    @Required
+    public Campus campus;
 }

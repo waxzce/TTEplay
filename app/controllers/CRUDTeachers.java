@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.adminCrud.persons;
+package controllers;
 
 import models.person.Teacher;
 import play.mvc.*;
@@ -15,5 +15,7 @@ import models.*;
  * @author waxzce
  */
 @CRUD.For(Teacher.class)
-public class Teachers extends CRUD {
+@Check("staff")
+@With(Secure.class)
+public class CRUDTeachers extends CRUD {
 }

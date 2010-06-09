@@ -2,9 +2,8 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package controllers.adminCrud.persons;
+package controllers;
 
-import models.person.Student;
 import play.mvc.*;
 import play.*;
 import controllers.CRUD;
@@ -14,6 +13,8 @@ import models.*;
  *
  * @author waxzce
  */
-@CRUD.For(Student.class)
-public class Studends extends CRUD {
+@CRUD.For(Location.class)
+@Check("staff")
+@With(Secure.class)
+public class CRUDLocations extends CRUD {
 }

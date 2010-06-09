@@ -1,0 +1,19 @@
+#{extends 'main.html' /}
+#{set title:'my calendar' /}
+
+{%
+
+com.google.gson.Gson gson = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
+
+String s = gson.toJson(calendar);
+
+%}
+
+${s}
+<h3>${user.firstName}</h3>
+
+<ul>
+#{list items:calendar, as:'event'}
+    <li>${event.start}</li>
+#{/list}
+</ul>
