@@ -9,6 +9,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import models.Campus;
 import models.person.Person;
+import play.data.validation.MaxSize;
 import play.data.validation.Required;
 
 /**
@@ -24,5 +25,6 @@ public class PersoEvent extends Event {
     @Required
     public String name;
     @Lob
+    @MaxSize(10000)
     public String description;
 }
