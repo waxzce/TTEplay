@@ -20,8 +20,6 @@ public class CampusEvent extends Event {
     @Required
     @ManyToOne
     public Campus campus;
-    @Required
-    public String name;
     @Lob
     public String description;
 }

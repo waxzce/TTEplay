@@ -26,8 +26,6 @@ public class LessonEvent extends Event {
     @Required
     @ManyToOne
     public Teacher teacher;
-    @Required
-    public String name;
     @Lob
     public String description;
 }

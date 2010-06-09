@@ -1,16 +1,25 @@
 #{extends 'main.html' /}
 #{set title:'my calendar' /}
+<link rel="stylesheet" type="text/css" href="@{'/public/fullcalendar/fullcalendar.css'}">
+<script type="text/javascript" src="@{'/public/fullcalendar/fullcalendar.js'}"></script>
+<script type="text/javascript">
+	
+	var events = '${calendar}';
 
-{%
+	events = JSON.parse(events.replace(new RegExp("&quot;", "g"), '"'));
 
-com.google.gson.Gson gson = new com.google.gson.GsonBuilder().setPrettyPrinting().create();
+	$(document).ready(function () {
+		$('#calendar').fullCalendar({
+			events: events
+		});
+	});
+</script>
 
-String s = gson.toJson(calendar);
 
-%}
-
-${s}
 <h3>${user.firstName}</h3>
+
+<div id="calendar">
+</div>
 
 <ul>
 #{list items:calendar, as:'event'}

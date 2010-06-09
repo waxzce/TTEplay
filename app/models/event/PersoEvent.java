@@ -21,8 +21,6 @@ public class PersoEvent extends Event {
     @Required
     @ManyToOne
     public Person person;
-    @Required
-    public String name;
     @Lob
     public String description;
 }

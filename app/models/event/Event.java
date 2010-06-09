@@ -11,6 +11,7 @@ import org.hibernate.annotations.Columns;
 import org.hibernate.annotations.Type;
 import org.joda.time.Interval;
 import play.db.jpa.Model;
+import play.data.validation.Required;
 
 /**
  *
@@ -25,8 +26,14 @@ public abstract class Event extends Model {
     @Type(type = "org.joda.time.contrib.hibernate.PersistentInterval")
     public Interval interval;
   */
+    @Required
     public Long start;
+    @Required
     public Long end;
+    @Required
+    public String name;
 
-
+    public String toString() {
+      return new String("{\"title\": \"" + this.name + "\", \"start\": " + this.start + ", \"end\": " + this.end + "}");
+    }
 }
