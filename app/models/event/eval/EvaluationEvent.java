@@ -21,8 +21,6 @@ import play.data.validation.Required;
 @Entity
 public abstract class EvaluationEvent extends Event {
 
-    @Required
-    public String name;
     @Lob
     public String description;
     @Required

@@ -17,8 +17,6 @@ import play.data.validation.Required;
 @Entity
 public class GlobalEvent extends Event {
 
-    @Required
-    public String name;
     @Lob
     public String description;
     private Boolean global = true;
