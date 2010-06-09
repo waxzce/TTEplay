@@ -11,7 +11,6 @@ import java.util.List;
 import models.event.*;
 import play.db.jpa.JPASupport;
 import play.exceptions.TemplateNotFoundException;
-import sun.tools.tree.SuperExpression;
 
 /**
  *
