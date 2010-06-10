@@ -99,7 +99,9 @@ public class Bootstrap extends Job {
         gs.password = "azerty";
         gs.mail = "gpougne@gmail.com";
         gs.save();
-
+        Lesson lll = new Lesson();
+        lll.name = "Math";
+        lll.save();
         //global event;
         GlobalEvent ge = new GlobalEvent();
         ge.name = "a GlobalEvent";
