@@ -6,11 +6,13 @@ package models.person;
 
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EntityManager;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import models.Lesson;
 import models.event.Event;
+import play.db.jpa.JPA;
 
 /**
  *
@@ -23,6 +25,8 @@ public class Teacher extends Person {
     public Lesson lesson;
 
     public List<Event> getCalendar() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        EntityManager em = JPA.em();
+        List<Event> l = em.createQuery("from Event e where e.global = true OR e.perso = :perso OR e.teacher = :teacher").setParameter("teacher", this).setParameter("perso", this).getResultList();
+        return l;
     }
 }
