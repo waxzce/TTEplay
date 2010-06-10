@@ -2,16 +2,14 @@
 
 TimeTableEasy is a school project. Not designed for production.
 
-
-## Dépendances
-
 this is a play framework project
 
 ## License 
 
-(The MIT License)
+(The WTF public License)
+-> http://fr.wikipedia.org/wiki/WTF_Public_License
 
-Copyright (c) 2010 Mathieu Merdy &lt;gfarof@gmail.com&gt;
+Copyleft enjoy
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
