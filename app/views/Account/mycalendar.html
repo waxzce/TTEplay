@@ -1,5 +1,6 @@
 #{extends 'main.html' /}
 #{set title:'my calendar' /}
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="@{'/public/fullcalendar/fullcalendar.css'}">
 <script type="text/javascript" src="@{'/public/fullcalendar/fullcalendar.js'}"></script>
 <script type="text/javascript">
@@ -7,6 +8,10 @@
 	var events = '${calendar}';
 
 	events = JSON.parse(events.replace(new RegExp("&quot;", "g"), '"'));
+=======
+<h2>My calendar</h2>
+{%
+>>>>>>> mqueneau/master
 
 	$(document).ready(function () {
 		$('#calendar').fullCalendar({
