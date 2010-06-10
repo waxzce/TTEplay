@@ -58,7 +58,7 @@ public class Account extends Controller {
             Event event = it.next();
             FullCalendarEvent fce = new FullCalendarEvent();
             fce.allDay = false;
-            fce.className = event.getClass().getName();
+            fce.className = event.getClass().getSimpleName();
             fce.editable = false;
             fce.end = (new DateTime(event.end)).toString();
             fce.start = (new DateTime(event.start)).toString();
