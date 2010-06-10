@@ -16,15 +16,37 @@
                 left: 'prev,next today',
                 center: 'title',
                 right: 'month,agendaWeek,agendaDay'
+            },
+            eventMouseover:function(e){
+                var obj = jQuery.parseJSON($.ajax({ url: "/Event/json?id="+e.id,async: false
+                }).responseText);
+                var ss = "";
+                for(o in obj){
+                    if(o == "id" || o == "start" || o == "end" || o == "klass" ){
+                        continue;
+                    }
+                    if(o == "lesson"){
+                        ss += obj[o].name;
+                    }
+                    ss += "<p><b>"+o+"</b> : "+obj[o]+"</p>";
+                }
+                $("#dialog").html(ss);
+            },
+            eventMouseout:function(e){
+                $("#dialog").empty();
             }
 
 
         });
     });
+
+    $("dialog").dialog({ autoOpen: false })
+
 </script>
 
 
 <h2>My calendar</h2>
+
 <div id="calendar">
 </div>
 

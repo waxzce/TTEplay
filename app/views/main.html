@@ -30,6 +30,7 @@
                     <a href="@{Account.mycalendar}">My calendar</a><br/>
                     <a href="@{Account.me}">Me</a><br/>
                 </div>
+
                 <h4>Administration</h4>
                 <div class="menuGauche">
 				#{if controllers.Security.check("staff")}
@@ -55,8 +56,15 @@
                     <a href="@{CRUDCampusEvents.list}">Manage local events</a><br/>
 				#{/if}
                 </div>
+
                 <div id="logout"><a href="@{Secure.logout}">Logout</a></div>
+
+                <span style="height: 30px;display: block;"></span>
+                <div id="dialog" style="margin-top: 30px;" >
+
             </div>
+            </div>
+            
             <div  class="span-19 last" id="corps">
 	       		#{doLayout /}
             </div>
