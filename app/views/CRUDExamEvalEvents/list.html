@@ -9,7 +9,10 @@
     </div>
 
     <div id="crudListTable">
-		#{crud.table fields:['name','start','end']}
+		#{crud.table fields:['name','lesson','start','end']}
+        #{crud.custom 'lesson'}
+        ${object.lesson?.name}
+        #{/crud.custom}
         #{crud.custom 'start'}
         ${(new org.joda.time.DateTime(object.start)).toString()}
         #{/crud.custom}

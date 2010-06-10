@@ -39,7 +39,9 @@
 		    		#{/if}
 			    	<a href="@{CRUDPersoEvents.list}">Manage my own calendar</a><br/>
 				#{if controllers.Security.check("globalstaff")}
+                                <a href="@{CRUDLessons.list}">Manage lesson list</a><br/>
 				<a href="@{CRUDGlobalEvents.list}">Manage global events</a><br/>
+                                <a href="@{CRUDExamEvalEvents.list}">Manage Exam events</a><br/>
 				#{/if}
 				#{if controllers.Security.check("localstaff")}
 				<a href="@{CRUDCampusEvents.list}">Manage local events</a><br/>
