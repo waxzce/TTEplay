@@ -9,7 +9,7 @@ CRUDGlobalStaffs=Manage Global Staffs
 CRUDPersoEvents=Manage my own calendar
 CRUDGlobalEvents=Manage global events
 CRUDCampusEvents=Manage local events
-klass=class
+klass=Class
 lastName=Last Name
 firstName=First Name
 name=Name
@@ -22,5 +22,5 @@ dateOfBirth=Date of Birth
 description=Description
 GlobalEvent=Global Event
 PersoEvent=Perso Event
-GlobalStaff=Gloval Staff
+GlobalStaff=Global Staff
 
