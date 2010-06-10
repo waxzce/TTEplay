@@ -10,10 +10,9 @@ $(document).ready(function(){
 });
 
 $(document).ready(function(){
-    $('form').submit(function() {
+    $("input[type='submit']").click(function() {
         var defaultConv = new AnyTime.Converter();
         var date = defaultConv.parse($("#object_start").val());
-        var date2 = new Date(date);
-        alert(date2);
+        $("#object_start").val(date.getTime());
     });
 });
