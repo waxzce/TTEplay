@@ -190,11 +190,26 @@ public class Bootstrap extends Job {
         s2.password = "azerty";
         s2.mail = "jrousseau@gmail.com";
         s2.campus = c2;
+        List<Lesson> listlesson = Lesson.findAll();
         for (int i = 0; i < 20; i++) {
             Teacher p = new Teacher();
             p.firstName = lprenoms.get(randomGenerator.nextInt(lprenoms.size()));
             p.lastName = lnoms.get(randomGenerator.nextInt(lnoms.size()));
             p.login = (p.firstName.substring(0, 1) + p.lastName).toLowerCase();
+            p.password = "azerty";
+            p.lesson = listlesson.get(randomGenerator.nextInt(listlesson.size()));
+            p.mail = p.login + "@globalcampus.com";
+            p.dateOfBirth = new Date(90 - randomGenerator.nextInt(11), randomGenerator.nextInt(11), randomGenerator.nextInt(11));
+            p.save();
+        }
+
+        for (Iterator<Lesson> it = listlesson.iterator(); it.hasNext();) {
+            Lesson lesson = it.next();
+            Teacher p = new Teacher();
+            p.firstName = lprenoms.get(randomGenerator.nextInt(lprenoms.size()));
+            p.lastName = lnoms.get(randomGenerator.nextInt(lnoms.size()));
+            p.login = (p.firstName.substring(0, 1) + p.lastName).toLowerCase();
+            p.lesson = lesson;
             p.password = "azerty";
             p.mail = p.login + "@globalcampus.com";
             p.dateOfBirth = new Date(90 - randomGenerator.nextInt(11), randomGenerator.nextInt(11), randomGenerator.nextInt(11));
@@ -264,7 +279,7 @@ public class Bootstrap extends Job {
             ge.save();
         }
 
-        List<Lesson> listlesson = Lesson.findAll();
+
 
         for (int i = 0; i < 30; i++) {
             ExamEvalEvent ge = new ExamEvalEvent();
@@ -285,10 +300,11 @@ public class Bootstrap extends Job {
         List<Teacher> listTeacher = Teacher.findAll();
         //lesson event;
 
-        for (int i = 0; i < 80; i++) {
+        for (int i = 0; i < 350; i++) {
             LessonEvent ge = new LessonEvent();
             ge.lesson = listlesson.get(randomGenerator.nextInt(listlesson.size()));
             ge.teacher = listTeacher.get(randomGenerator.nextInt(listTeacher.size()));
+           
             ge.klass = lklass.get(randomGenerator.nextInt(lklass.size()));
             int modeint = randomGenerator.nextInt(3);
             switch (modeint) {
