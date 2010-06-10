@@ -9,7 +9,8 @@
 	</div>
 
 	<div id="crudListTable">
-		#{crud.table /}
+		#{crud.table fields:['lastName','firstName']}
+                #{/crud.table}
 	</div>
 	
 	<div id="crudListPagination">

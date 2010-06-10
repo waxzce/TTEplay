@@ -4,14 +4,13 @@
 <script type="text/javascript" src="@{'/public/fullcalendar/fullcalendar.js'}"></script>
 <script type="text/javascript">
 	
-    var events = '${calendar}';
-
-    events = JSON.parse(events.replace(new RegExp("&quot;", "g"), '"'));
+   
+  //  events = JSON.parse(events.replace(new RegExp("&quot;", "g"), '"'));
 
 
     $(document).ready(function () {
         $('#calendar').fullCalendar({
-            events: events
+            events: '@{Account.jsonmycal}'
         });
     });
 </script>
