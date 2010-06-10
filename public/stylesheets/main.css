@@ -15,3 +15,34 @@ body{background-color:#ededed}
 #crudListAdd a{margin-right:10px; margin-top:7.5px;}
 .crudDelete input{margin-right:10px; margin-top:7.5px;}
 .me{padding-left:10px;}
+
+
+.LessonEvent,
+.fc-agenda .LessonEvent .fc-event-time,
+.LessonEvent a {
+    background-color: green; /* background color */
+    border-color: green;     /* border color */
+    color: yellow;           /* text color */
+}
+
+.PersoEvent,
+.fc-agenda .PersoEvent .fc-event-time,
+.PersoEvent a {
+    background-color: black; /* background color */
+    border-color: black;     /* border color */
+    color: white;           /* text color */
+}
+
+.ExamEvalEvent,
+.fc-agenda .ExamEvalEvent .fc-event-time,
+.ExamEvalEvent a,
+.OralEvalEvent,
+.fc-agenda .OralEvalEvent .fc-event-time,
+.OralEvalEvent a,
+.PracticalEvalEvent,
+.fc-agenda .PracticalEvalEvent .fc-event-time,
+.PracticalEvalEvent a{
+    background-color: red; /* background color */
+    border-color: red;     /* border color */
+    color: white;           /* text color */
+}

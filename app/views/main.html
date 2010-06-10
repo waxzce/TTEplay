@@ -4,59 +4,62 @@
     <head>
         <title>#{get 'title' /}</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/blueprint/screen.css'}">
-	<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/blueprint/print.css'}">
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/blueprint/screen.css'}">
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/blueprint/print.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
+        <link rel="stylesheet" type="text/css" href="@{'/public/fullcalendar/fullcalendar.css'}">
+
         <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/crud.css'}" />
-	<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
+        <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
         <link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/anytime.css'}">
         <script src="@{'/public/javascripts/jquery-1.4.2.min.js'}" type="text/javascript" charset="utf-8"></script>
         <script src="@{'/public/javascripts/anytime.js'}" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" src="@{'/public/fullcalendar/fullcalendar.js'}"></script>
         <script src="@{'/public/javascripts/anytime_start.js'}" type="text/javascript" charset="utf-8"></script>
         <script src="@{'/public/javascripts/anytime_end.js'}" type="text/javascript" charset="utf-8"></script>
         #{get 'moreScripts' /}
     </head>
     <body>
-	<div class="container">
-		<div class="span-24" id="header">
-		</div>
-		<div class="span-4" id="menuGauche">
-			<h4>Information</h4>
-			<div class="menuGauche">
-				<a href="@{Account.mycalendar}">My calendar</a><br/>
-				<a href="@{Account.me}">Me</a><br/>
-			</div>
-			<h4>Administration</h4>
-			<div class="menuGauche">
+        <div class="container">
+            <div class="span-24" id="header">
+            </div>
+            <div class="span-4" id="menuGauche">
+                <h4>Information</h4>
+                <div class="menuGauche">
+                    <a href="@{Account.mycalendar}">My calendar</a><br/>
+                    <a href="@{Account.me}">Me</a><br/>
+                </div>
+                <h4>Administration</h4>
+                <div class="menuGauche">
 				#{if controllers.Security.check("staff")}
-		    		<a href="@{CRUDStudends.list}">Manage Students</a><br/>
-				<a href="@{CRUDTeachers.list}">Manage Teachers</a><br/>
+                    <a href="@{CRUDStudends.list}">Manage Students</a><br/>
+                    <a href="@{CRUDTeachers.list}">Manage Teachers</a><br/>
 				#{if controllers.Security.check("globalstaff")}
-				<a href="@{CRUDStaffs.list}">Manage Local Staff</a><br/>
-				<a href="@{CRUDGlobalStaffs.list}">Manage Global Staff</a><br/>
+                    <a href="@{CRUDStaffs.list}">Manage Local Staff</a><br/>
+                    <a href="@{CRUDGlobalStaffs.list}">Manage Global Staff</a><br/>
 				#{/if}
 		    		#{/if}
-			    	<a href="@{CRUDPersoEvents.list}">Manage my own calendar</a><br/>
+                    <a href="@{CRUDPersoEvents.list}">Manage my own calendar</a><br/>
 				#{if controllers.Security.check("globalstaff")}
-                                <a href="@{CRUDLessons.list}">Manage lesson list</a><br/>
-				<a href="@{CRUDGlobalEvents.list}">Manage global events</a><br/>
-                                <a href="@{CRUDExamEvalEvents.list}">Manage Exam events</a><br/>
-                                <a href="@{CRUDKlasss.list}">Manage class list</a><br/>
-                                <a href="@{CRUDCampuss.list}">Manage campus list</a><br/>
+                    <a href="@{CRUDLessons.list}">Manage lesson list</a><br/>
+                    <a href="@{CRUDGlobalEvents.list}">Manage global events</a><br/>
+                    <a href="@{CRUDExamEvalEvents.list}">Manage Exam events</a><br/>
+                    <a href="@{CRUDKlasss.list}">Manage class list</a><br/>
+                    <a href="@{CRUDCampuss.list}">Manage campus list</a><br/>
 				#{/if}
 				#{if controllers.Security.check("localstaff")}
-                                <a href="@{CRUDOralEvalEvents.list}">Manage Oral Exam events</a><br/>
-                                <a href="@{CRUDPracticalEvalEvents.list}">Manage Practical Exam events</a><br/>
-                                <a href="@{CRUDLessonEvents.list}">Manage Lessons events</a><br/>
-				<a href="@{CRUDCampusEvents.list}">Manage local events</a><br/>
+                    <a href="@{CRUDOralEvalEvents.list}">Manage Oral Exam events</a><br/>
+                    <a href="@{CRUDPracticalEvalEvents.list}">Manage Practical Exam events</a><br/>
+                    <a href="@{CRUDLessonEvents.list}">Manage Lessons events</a><br/>
+                    <a href="@{CRUDCampusEvents.list}">Manage local events</a><br/>
 				#{/if}
-			</div>
-			<div id="logout"><a href="@{Secure.logout}">Logout</a></div>
-		</div>
-		<div  class="span-19 last" id="corps">
+                </div>
+                <div id="logout"><a href="@{Secure.logout}">Logout</a></div>
+            </div>
+            <div  class="span-19 last" id="corps">
 	       		#{doLayout /}
-		</div>
-	</div>
+            </div>
+        </div>
     </body>
 </html>

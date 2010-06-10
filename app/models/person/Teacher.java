@@ -26,7 +26,7 @@ public class Teacher extends Person {
 
     public List<Event> getCalendar() {
         EntityManager em = JPA.em();
-        List<Event> l = em.createQuery("from Event e where e.global = true OR e.perso = :perso OR e.teacher = :teacher").setParameter("teacher", this).setParameter("perso", this).getResultList();
+        List<Event> l = em.createQuery("from Event e where e.global = true OR e.person = :perso OR e.teacher = :teacher").setParameter("teacher", this).setParameter("perso", this).getResultList();
         return l;
     }
 }

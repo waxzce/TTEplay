@@ -220,7 +220,7 @@ public class Bootstrap extends Job {
         tea.dateOfBirth = new Date(70, 0, 1);
         tea.firstName = "Kevin";
         tea.lastName = "DECHERF";
-        tea.login = "kdercher";
+        tea.login = "kdecherf";
         tea.mail = "kdecherf@gmail.com";
         tea.password = "azerty";
 
@@ -281,7 +281,7 @@ public class Bootstrap extends Job {
 
 
 
-        for (int i = 0; i < 30; i++) {
+        for (int i = 0; i < 60; i++) {
             ExamEvalEvent ge = new ExamEvalEvent();
             ge.lesson = listlesson.get(randomGenerator.nextInt(listlesson.size()));
             ge.promo = lp.get(randomGenerator.nextInt(lp.size()));
@@ -300,7 +300,7 @@ public class Bootstrap extends Job {
         List<Teacher> listTeacher = Teacher.findAll();
         //lesson event;
 
-        for (int i = 0; i < 350; i++) {
+        for (int i = 0; i < 450; i++) {
             LessonEvent ge = new LessonEvent();
             ge.lesson = listlesson.get(randomGenerator.nextInt(listlesson.size()));
             ge.teacher = listTeacher.get(randomGenerator.nextInt(listTeacher.size()));
@@ -330,7 +330,7 @@ public class Bootstrap extends Job {
         }
 
         List<Person> listofperson = Person.findAll();
-        for (int i = 0; i < 300; i++) {
+        for (int i = 0; i < 350; i++) {
             PersoEvent ge = new PersoEvent();
             ge.person = listofperson.get(randomGenerator.nextInt(listofperson.size()));
 
@@ -347,7 +347,7 @@ public class Bootstrap extends Job {
             ge.save();
         }
         List<Student> liststudent = Student.findAll();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 200; i++) {
             OralEvalEvent ge = new OralEvalEvent();
             ge.student = liststudent.get(randomGenerator.nextInt(liststudent.size()));
             ge.lesson = listlesson.get(randomGenerator.nextInt(listlesson.size()));
@@ -365,7 +365,7 @@ public class Bootstrap extends Job {
             ge.save();
         }
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 200; i++) {
             PracticalEvalEvent ge = new PracticalEvalEvent();
             ge.klass = lklass.get(randomGenerator.nextInt(lklass.size()));
             ge.lesson = listlesson.get(randomGenerator.nextInt(listlesson.size()));
