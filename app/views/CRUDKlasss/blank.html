@@ -15,12 +15,20 @@
         <select id="object_campus" name="object.campus@id">
             <option value="">(None)</option>
 	        #{list items:models.Campus.findAll(), as:'campus'}
-            <option value="${campus.id}">${campus.name}</option>
+            <option value="${campus.id}" selected="$(object.campus.id == campus.id ? 'true' : 'false')">${campus.name}</option>
 	        #{/list}
         </select>
-
-
-
+        #{/crud.custom}
+        #{crud.custom 'promo'}
+        <label for="promo">
+            &{'promo'}
+        </label>
+        <select id="object_promo" name="object.promo@id">
+            <option value="">(None)</option>
+	        #{list items:models.Promo.findAll(), as:'promo'}
+            <option value="${promo.id}" selected="$(object.promo.id == promo.id ? 'true' : 'false')">${promo.name}</option>
+	        #{/list}
+        </select>
         #{/crud.custom}
         #{/crud.form}
         <p class="crudButtons">

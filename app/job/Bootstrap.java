@@ -13,6 +13,8 @@ import models.person.GlobalStaff;
 import models.person.Staff;
 import models.person.Student;
 import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 import play.*;
 import play.jobs.*;
 import play.test.*;
@@ -41,10 +43,52 @@ public class Bootstrap extends Job {
         Campus c2 = new Campus();
         c2.name = "Tours";
         c2.save();
+        Campus paris = new Campus();
+        paris.name = "Paris";
+        paris.save();
+        Campus toulouse = new Campus();
+        toulouse.name = "Toulouse";
+        toulouse.save();
+        Campus bordeau = new Campus();
+        bordeau.name = "Bordeau";
+        bordeau.save();
         // promo M1
+        Promo b1 = new Promo();
+        b1.name = "B1";
+        b1.save();
+        Promo b2 = new Promo();
+        b2.name = "B2";
+        b2.save();
         Promo pro = new Promo();
         pro.name = "M1";
         pro.save();
+        Promo m2 = new Promo();
+        m2.name = "M2";
+        m2.save();
+        Promo b3 = new Promo();
+        b3.name = "B3";
+        b3.save();
+
+        List<Promo> lp = Promo.findAll();
+        List<Campus> lc = Campus.findAll();
+        for (Iterator<Promo> it = lp.iterator(); it.hasNext();) {
+            Promo promo = it.next();
+            for (Iterator<Campus> it1 = lc.iterator(); it1.hasNext();) {
+                Campus campus = it1.next();
+                Klass klass = new Klass();
+                klass.name = promo.name + "A";
+                klass.promo = promo;
+                klass.campus = campus;
+                klass.save();
+                if (Math.random() < 0.2) {
+                    Klass klass2 = new Klass();
+                    klass2.name = promo.name + "B";
+                    klass2.promo = promo;
+                    klass2.campus = campus;
+                    klass2.save();
+                }
+            }
+        }
         // promo M1
         Klass po = new Klass();
         po.campus = c;
@@ -112,6 +156,21 @@ public class Bootstrap extends Job {
         Lesson lll = new Lesson();
         lll.name = "Math";
         lll.save();
+
+
+        Lesson linuxlesson = new Lesson();
+        linuxlesson.name = "Linux";
+        linuxlesson.save();
+        Lesson microsoftlesson = new Lesson();
+        microsoftlesson.name = "Microsoft";
+        microsoftlesson.save();
+        Lesson OracleLesson = new Lesson();
+        OracleLesson.name = "Oracle";
+        OracleLesson.save();
+        Lesson itlawlesson = new Lesson();
+        itlawlesson.name = "IT Law";
+        itlawlesson.save();
+
         //global event;
         GlobalEvent ge = new GlobalEvent();
         ge.name = "a GlobalEvent";
