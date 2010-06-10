@@ -1,18 +1,34 @@
 #{extends 'main.html' /}
 
 <div id="crudBlank" class="${type.name}">
-	
-	<h2 id="crudBlankTitle">&{'crud.blank.title', type.modelName}</h2>
-	
-	<div class="objectForm">
+
+    <h2 id="crudBlankTitle">&{'crud.blank.title', type.modelName}</h2>
+
+    <div class="objectForm">
 	#{form action:@create(), enctype:'multipart/form-data'}
-		#{crud.form /}
-		<p class="crudButtons">
-			<input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
-			<input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
-			<input type="submit" name="_saveAndAddAnother" value="&{'crud.saveAndAddAnother', type.modelName}" />
-		</p>
+		#{crud.form}
+
+        #{crud.custom 'campus'}
+        <label for="klass">
+            &{'campus'}
+        </label>
+        <select id="object_klass" name="object.klass@id">
+            <option value="">(None)</option>
+	        #{list items:models.Campus.findAll(), as:'campus'}
+            <option value="${campus.id}">${campus.name}</option>
+	        #{/list}
+        </select>
+
+
+
+        #{/crud.custom}
+        #{/crud.form}
+        <p class="crudButtons">
+            <input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
+            <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
+            <input type="submit" name="_saveAndAddAnother" value="&{'crud.saveAndAddAnother', type.modelName}" />
+        </p>
 	#{/form}
-	</div>
+    </div>
 
 </div>

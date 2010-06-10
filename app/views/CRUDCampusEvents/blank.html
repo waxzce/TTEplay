@@ -6,7 +6,23 @@
 	
 	<div class="objectForm">
 	#{form action:@create(), enctype:'multipart/form-data'}
-		#{crud.form /}
+		#{crud.form}
+
+        #{crud.custom 'campus'}
+        <label for="klass">
+            &{'campus'}
+        </label>
+        <select id="object_klass" name="object.klass@id">
+            <option value="">(None)</option>
+	        #{list items:models.Campus.findAll(), as:'campus'}
+            <option value="${campus.id}" selected="$(object.campus.id == campus.id ? 'true' : 'false')">${campus.name}</option>
+	        #{/list}
+        </select>
+
+
+
+        #{/crud.custom}
+        #{/crud.form}
 		<p class="crudButtons">
 			<input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
 			<input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
