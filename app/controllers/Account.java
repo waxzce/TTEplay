@@ -7,6 +7,7 @@ import play.mvc.*;
 import com.google.gson.*;
 import java.util.ArrayList;
 import java.util.Iterator;
+import org.joda.time.DateTime;
 import util.FullCalendarEvent;
 
 @With(Secure.class)
@@ -38,25 +39,7 @@ public class Account extends Controller {
     public static void mycalendar() {
         Person user = Person.get(Security.connected());
         List<Event> calendar = user.getCalendar();
-        List<FullCalendarEvent> lfes = new ArrayList<FullCalendarEvent>();
-        for (Iterator<Event> it = calendar.iterator(); it.hasNext();) {
-            Event event = it.next();
-            FullCalendarEvent fce = new FullCalendarEvent();
-            fce.allDay = false;
-            fce.className = event.getClass().getName();
-            fce.editable = false;
-            fce.end = event.end;
-            fce.start = event.start;
-            fce.id = event.id;
-            fce.title = event.name;
-            fce.url = "";
-            lfes.add(fce);
-        }
-
-        Gson gson = new Gson();
-
-        String jsoncal = gson.toJson(lfes);
-
+       
 
         /*        GsonBuilder gsonB = new GsonBuilder();
         gsonB.registerTypeAdapter(Event.class, new EventSerializer());
@@ -64,10 +47,10 @@ public class Account extends Controller {
         Gson gson = gsonB.setPrettyPrinting().create();
         String jsonCalendar = gson.toJson(calendar);*/
 
-        render(calendar, user, jsoncal);
+        render(calendar, user);
     }
 
-    public static void jsonmycal(){
+    public static void jsonmycal() {
         Person user = Person.get(Security.connected());
         List<Event> calendar = user.getCalendar();
         List<FullCalendarEvent> lfes = new ArrayList<FullCalendarEvent>();
@@ -75,10 +58,10 @@ public class Account extends Controller {
             Event event = it.next();
             FullCalendarEvent fce = new FullCalendarEvent();
             fce.allDay = false;
-            fce.className = event.getClass().getName();
+            fce.className = event.getClass().getSimpleName();
             fce.editable = false;
-            fce.end = event.end;
-            fce.start = event.start;
+            fce.end = (new DateTime(event.end)).toString();
+            fce.start = (new DateTime(event.start)).toString();
             fce.id = event.id;
             fce.title = event.name;
             fce.url = "";

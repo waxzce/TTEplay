@@ -5,12 +5,21 @@
 <script type="text/javascript">
 	
    
-  //  events = JSON.parse(events.replace(new RegExp("&quot;", "g"), '"'));
+    //  events = JSON.parse(events.replace(new RegExp("&quot;", "g"), '"'));
 
 
     $(document).ready(function () {
         $('#calendar').fullCalendar({
-            events: '@{Account.jsonmycal}'
+            events: '@{Account.jsonmycal}',
+            firstDay :1,
+            defaultView:'agendaWeek',
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            }
+
+
         });
     });
 </script>
@@ -20,8 +29,3 @@
 <div id="calendar">
 </div>
 
-<ul>
-    #{list items:calendar, as:'event'}
-    <li>${event.start}</li>
-    #{/list}
-</ul>
