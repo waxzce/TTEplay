@@ -23,4 +23,6 @@ description=Description
 GlobalEvent=Global Event
 PersoEvent=Perso Event
 GlobalStaff=Global Staff
+globalstaff=Global Staff
+staff=Staff
 
