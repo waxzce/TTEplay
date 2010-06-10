@@ -14,3 +14,4 @@ body{background-color:#ededed}
 #corps{margin-top:5px; background-color:#fff; border:1px solid #000;}
 #crudListAdd a{margin-right:10px; margin-top:7.5px;}
 .crudDelete input{margin-right:10px; margin-top:7.5px;}
+.me{padding-left:10px;}
