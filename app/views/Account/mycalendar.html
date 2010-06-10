@@ -22,11 +22,28 @@
                 }).responseText);
                 var ss = "";
                 for(o in obj){
-                    if(o == "id" || o == "start" || o == "end" || o == "klass" ){
+                    if(o == "id" || o == "start" || o == "end" || o == "person"  ){
                         continue;
                     }
                     if(o == "lesson"){
-                        ss += obj[o].name;
+                        ss += "<p>"+obj[o].name+"</p>";
+                        continue;
+                    }
+                    if(o == "klass"){
+                        ss += "<p>"+obj[o].name+"</p>";
+                        continue;
+                    }
+                    if(o == "teacher"){
+                        ss += "<p>"+obj[o].firstName+" "+obj[o].lastName+ "</p>";
+                        continue;
+                    }
+                    if(o == "promo"){
+                        ss += "<p>"+obj[o].name+ "</p>";
+                        continue;
+                    }
+                    if(o == "campus"){
+                        ss += "<p>"+obj[o].name+ "</p>";
+                        continue;
                     }
                     ss += "<p><b>"+o+"</b> : "+obj[o]+"</p>";
                 }

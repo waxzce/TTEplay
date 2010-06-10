@@ -38,8 +38,8 @@ public class Account extends Controller {
 
     public static void mycalendar() {
         Person user = Person.get(Security.connected());
-        List<Event> calendar = user.getCalendar();
-       
+        List<models.event.Event> calendar = user.getCalendar();
+
 
         /*        GsonBuilder gsonB = new GsonBuilder();
         gsonB.registerTypeAdapter(Event.class, new EventSerializer());
@@ -52,10 +52,10 @@ public class Account extends Controller {
 
     public static void jsonmycal() {
         Person user = Person.get(Security.connected());
-        List<Event> calendar = user.getCalendar();
+        List<models.event.Event> calendar = user.getCalendar();
         List<FullCalendarEvent> lfes = new ArrayList<FullCalendarEvent>();
-        for (Iterator<Event> it = calendar.iterator(); it.hasNext();) {
-            Event event = it.next();
+        for (Iterator<models.event.Event> it = calendar.iterator(); it.hasNext();) {
+            models.event.Event event = it.next();
             FullCalendarEvent fce = new FullCalendarEvent();
             fce.allDay = false;
             fce.className = event.getClass().getSimpleName();
