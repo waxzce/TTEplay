@@ -1,23 +1,53 @@
 #{extends 'main.html' /}
 
 <div id="crudShow" class="${type.name}">
-	
-	<h2 id="crudShowTitle">&{'crud.show.title', type.modelName}</h2>
-	
-	<div class="objectForm">
+
+    <h2 id="crudShowTitle">&{'crud.show.title', type.modelName}</h2>
+
+    <div class="objectForm">
 	#{form action:@save(object.id), enctype:'multipart/form-data'}
-		#{crud.form /}
-		<p class="crudButtons">
-			<input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
-			<input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
-		</p>
+			#{crud.form}
+
+        #{crud.custom 'klass'}
+        <label for="klass">
+            &{'klass'}
+        </label>
+        <select id="object_klass" name="object.klass@id">
+            <option value="">(None)</option>
+	        #{list items:models.Klass.findForCampus(controllers.Security.get().campus), as:'klass'}
+            <option value="${klass.id}" selected="$(object.klass.id == klass.id ? 'true' : 'false')">${klass?.name} | ${klass?.promo?.name} | ${klass?.campus?.name}</option>
+	        #{/list}
+        </select>
+
+
+
+        #{/crud.custom}
+        #{crud.custom 'lesson'}
+        <label for="lesson">
+            &{'lesson'}
+        </label>
+        <select id="object_lesson" name="object.lesson@id">
+            <option value="">(None)</option>
+	        #{list items:models.Lesson.findAll(), as:'lesson'}
+            <option value="${lesson.id}" selected="$(object.lesson.id == lesson.id ? 'true' : 'false')">${lesson.name}</option>
+	        #{/list}
+        </select>
+
+
+
+        #{/crud.custom}
+        #{/crud.form}
+        <p class="crudButtons">
+            <input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
+            <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />
+        </p>
 	#{/form}
-	</div>
-	
+    </div>
+
 	#{form @delete(object.id)}
-		<p class="crudDelete">
-			<input type="submit" value="&{'crud.delete', type.modelName}" />
-		</p>
+    <p class="crudDelete">
+        <input type="submit" value="&{'crud.delete', type.modelName}" />
+    </p>
 	#{/form}
 
 </div>
