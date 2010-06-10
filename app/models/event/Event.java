@@ -33,7 +33,5 @@ public abstract class Event extends Model {
     @Required
     public String name;
 
-    public String toString() {
-      return new String("{\"title\": \"" + this.name + "\", \"start\": " + this.start + ", \"end\": " + this.end + "}");
-    }
+    
 }
