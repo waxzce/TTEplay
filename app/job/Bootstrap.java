@@ -23,6 +23,7 @@ import models.event.eval.ExamEvalEvent;
 import models.event.GlobalEvent;
 import models.event.LessonEvent;
 import models.event.PersoEvent;
+import models.person.Teacher;
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
 
@@ -90,6 +91,15 @@ public class Bootstrap extends Job {
         s2.mail = "jrousseau@gmail.com";
         s2.campus = c2;
         s2.save();
+
+        Teacher tea = new Teacher();
+        tea.dateOfBirth = new Date(70, 0, 1);
+        tea.firstName = "Kevin";
+        tea.lastName = "DECHERF";
+        tea.login = "kdercher";
+        tea.mail = "kdecherf@gmail.com";
+        tea.password = "azerty";
+        tea.save();
         /// user gpougne
         GlobalStaff gs = new GlobalStaff();
         gs.dateOfBirth = new Date(70, 0, 1);
@@ -131,9 +141,10 @@ public class Bootstrap extends Job {
         LessonEvent le = new LessonEvent();
         le.klass = po;
         le.name = "a LessonEvent";
-        le.description = "big test";
+        le.lesson = lll;
         le.start = (new DateTime()).getMillis();
         le.end = new DateTime((new DateTime()).getMillis() + (3600 * 1000)).getMillis();
+        le.teacher = tea;
         le.save();
         //perso event;
         PersoEvent per = new PersoEvent();

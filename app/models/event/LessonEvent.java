@@ -9,7 +9,9 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import models.Campus;
 import models.Klass;
+import models.Lesson;
 import models.Promo;
+import models.i.LessonMode;
 import models.person.Teacher;
 import play.data.validation.Required;
 
@@ -23,9 +25,11 @@ public class LessonEvent extends Event {
     @Required
     @ManyToOne
     public Klass klass;
-    @Required
     @ManyToOne
     public Teacher teacher;
-    @Lob
-    public String description;
+    @Required
+    @ManyToOne
+    public Lesson lesson;
+    @Required
+    public LessonMode mode;
 }

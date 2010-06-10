@@ -1,0 +1,39 @@
+#{extends 'main.html' /}
+
+<div id="crudList" class="${type.name}">
+
+    <h2 id="crudListTitle">&{'crud.list.title', type.name}</h2>
+
+    <div id="crudListSearch">
+		#{crud.search /}
+    </div>
+
+    <div id="crudListTable">
+		#{crud.table fields:['name','lesson','klass','teacher','start','end']}
+        #{crud.custom 'lesson'}
+        ${object.lesson?.name}
+        #{/crud.custom}
+        #{crud.custom 'klass'}
+        ${object.klass?.name} | ${object.klass?.promo?.name} | ${object.klass?.campus?.name}
+        #{/crud.custom}
+        #{crud.custom 'teacher'}
+        ${object.teacher?.firstName} ${object.teacher?.lastName}
+        #{/crud.custom}
+        #{crud.custom 'start'}
+        ${(new org.joda.time.DateTime(object.start)).toString()}
+        #{/crud.custom}
+        #{crud.custom 'end'}
+        ${(new org.joda.time.DateTime(object.start)).toString()}
+        #{/crud.custom}
+        #{/crud.table}
+    </div>
+
+    <div id="crudListPagination">
+		#{crud.pagination /}
+    </div>
+
+    <p id="crudListAdd">
+        <a href="@{blank()}">&{'crud.add', type.modelName}</a>
+    </p>
+
+</div>
