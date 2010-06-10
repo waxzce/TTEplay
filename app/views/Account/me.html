@@ -2,7 +2,13 @@
 #{set title:'me' /}
 <h2>Me</h2>
 
-<h3>${user.firstName} ${user.lastName} - ${user.login}</h3>
+<h3>${user.firstName} ${user.lastName}</h3>
 
-<p>login: ${user.login}<br/>
-profile: ${profiles}</p>
+<p class="me">
+First Name: ${user.firstName}<br/>
+Last Name: ${user.lastName}<br/>
+Login: ${user.login}<br/>
+Profile: ${profiles}<br/>
+Mail: ${user.mail}<br/>
+Date of Birth: ${user.dateOfBirth}<br/>
+</p>
