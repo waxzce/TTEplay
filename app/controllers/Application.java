@@ -24,7 +24,7 @@ import play.mvc.*;
 public class Application extends Controller {
 
     public static void index() {
-        render();
+        redirect("/Account/mycalendar");
     }
 
     public static void dumpDBYAML() {
