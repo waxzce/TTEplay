@@ -7,7 +7,12 @@
 
     <div class="objectForm">
 	#{form action:@create(), enctype:'multipart/form-data'}
-		#{crud.form /}
+		#{crud.form}
+
+        #{crud.custom 'person'}
+        <input type="hidden" id="object_person" name="object.person@id" value="${controllers.Security.get().id}" />
+        #{/crud.custom}
+        #{/crud.form}
         <p class="crudButtons">
             <input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
             <input type="submit" name="_saveAndContinue" value="&{'crud.saveAndContinue', type.modelName}" />

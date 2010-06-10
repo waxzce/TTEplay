@@ -6,6 +6,7 @@
 
     <div class="objectForm">
 	#{form action:@save(object.id), enctype:'multipart/form-data'}
+<<<<<<< HEAD
 		#{crud.form}
 
         #{crud.custom 'start'}
@@ -25,6 +26,12 @@
         <input id="object_end" type="text" name="object.end" value="" size="5" />
 
 
+=======
+			#{crud.form}
+
+        #{crud.custom 'person'}
+        <input type="hidden" id="object_person" name="object.person@id" value="${controllers.Security.get().id}" />
+>>>>>>> e5d864781a53694cad720ca23b0eff333fa6d772
         #{/crud.custom}
         #{/crud.form}
         <p class="crudButtons">

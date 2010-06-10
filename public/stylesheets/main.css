@@ -7,7 +7,7 @@ h2{text-align:center;}
 body{background-color:#c3d9ff}
 .menuGauche{padding-left:10px;background-color:#efefef;padding-bottom:5px}
 #menuGauche{margin-left:10px; margin-top:5px; border:1px dashed #000;}
-#crudListSearch{margin-top:25px;}
+#crudListSearch{margin-top:20px;}
 #logout{text-decoration:none; margin-bottom:0;padding-left:5px;color:#000;background-color:#c3d9efefefff}
 #corps{margin-top:10px; padding-left:2px; padding-right:2px; padding-top:2px; background-color:#fff}
 

@@ -2,3 +2,10 @@
 # For example, for French create a messages.fr file
 #
 person=Person
+CRUDStudends=Manage Students
+CRUDTeachers=Manage Teachers
+CRUDStaffs=Manage Local Staffs
+CRUDGlobalStaffs=Manage Global Staffs
+CRUDPersoEvents=Manage my own calendar
+CRUDGlobalEvents=Manage global events
+CRUDCampusEvents=Manage local events
