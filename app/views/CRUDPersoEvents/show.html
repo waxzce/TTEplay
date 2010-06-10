@@ -11,6 +11,24 @@
         #{crud.custom 'person'}
         <input type="hidden" id="object_person" name="object.person@id" value="${controllers.Security.get().id}" />
         #{/crud.custom}
+        #{crud.custom 'start'}
+
+        <label for="object_start">
+            &{'start'}
+        </label>
+        <input id="object_start" type="text" name="object.start" value="" size="5" />
+
+
+        #{/crud.custom}
+        #{crud.custom 'end'}
+
+        <label for="object_end">
+            &{'start'}
+        </label>
+        <input id="object_end" type="text" name="object.end" value="" size="5" />
+
+
+        #{/crud.custom}
         #{/crud.form}
         <p class="crudButtons">
             <input type="submit" name="_save" value="&{'crud.save', type.modelName}" />
