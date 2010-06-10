@@ -8,6 +8,8 @@ package job;
  *
  * @author waxzce
  */
+import java.util.ArrayList;
+import java.util.Collections;
 import models.person.Person;
 import models.person.GlobalStaff;
 import models.person.Staff;
@@ -15,6 +17,7 @@ import models.person.Student;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Random;
 import play.*;
 import play.jobs.*;
 import play.test.*;
@@ -25,6 +28,9 @@ import models.event.eval.ExamEvalEvent;
 import models.event.GlobalEvent;
 import models.event.LessonEvent;
 import models.event.PersoEvent;
+import models.event.eval.OralEvalEvent;
+import models.event.eval.PracticalEvalEvent;
+import models.i.LessonMode;
 import models.person.Teacher;
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
@@ -90,31 +96,81 @@ public class Bootstrap extends Job {
             }
         }
         // promo M1
-        Klass po = new Klass();
-        po.campus = c;
-        po.promo = pro;
-        po.name = "M1A";
-        po.save();
+
+
+        Lesson lll = new Lesson();
+        lll.name = "Java";
+
+        lll.save();
+        Lesson linuxlesson = new Lesson();
+        linuxlesson.name = "Linux";
+
+        linuxlesson.save();
+        Lesson microsoftlesson = new Lesson();
+        microsoftlesson.name = "Microsoft";
+
+        microsoftlesson.save();
+        Lesson OracleLesson = new Lesson();
+        OracleLesson.name = "Oracle";
+
+        OracleLesson.save();
+        Lesson itlawlesson = new Lesson();
+        itlawlesson.name = "IT Law";
+
+        itlawlesson.save();
+
+        List<String> lprenoms = new ArrayList<String>();
+        List<String> lnoms = new ArrayList<String>();
+        List<Klass> lklass = Klass.findAll();
+
+        Collections.addAll(lprenoms,
+                "Alexandre", "Ines", "Mathis", "Marie", "Nathan", "Lucas", "Lea", "Theo", "Manon", "Hugo", "Emma", "Thomas", "Chloe", "Enzo", "Camille", "Maxime", "Oceane");
+        Collections.addAll(lnoms,
+                "Anastasie", "Dubourg", "Dumesnil", "Félicité", "Grenet", "Isidore", "Nastasie", "Roger", "Victoire", "Atala", "Desnoyers", "Bovary", "Yseult", "Maria", "Rouault", "Léocadie", "Charles");
+        int y = 0;
+        for (Iterator<String> it = lnoms.iterator(); it.hasNext();) {
+            String string = it.next();
+            lnoms.set(y, string.toUpperCase());
+            y++;
+        }
+        Random randomGenerator = new Random();
+        for (int i = 0; i < 70; i++) {
+            Student p = new Student();
+            p.firstName = lprenoms.get(randomGenerator.nextInt(lprenoms.size()));
+            p.lastName = lnoms.get(randomGenerator.nextInt(lnoms.size()));
+            p.login = (p.firstName.substring(0, 1) + p.lastName).toLowerCase();
+            p.password = "azerty";
+            p.mail = p.login + "@globalcampus.com";
+            p.klass = lklass.get(randomGenerator.nextInt(lklass.size()));
+            p.dateOfBirth = new Date(95 - randomGenerator.nextInt(11), randomGenerator.nextInt(11), randomGenerator.nextInt(11));
+            p.save();
+        }
+
         /// user waxzce
-        Student p = new Student();
-        p.dateOfBirth = new Date(88, 4, 5);
-        p.firstName = "Quentin";
-        p.lastName = "ADAM";
-        p.login = "waxzce";
-        p.password = "azerty";
-        p.mail = "waxzce@gmail.com";
-        p.klass = po;
-        p.save();
-        /// user farof
-        Student p2 = new Student();
-        p2.dateOfBirth = new Date(70, 0, 1);
-        p2.firstName = "Mathieu";
-        p2.lastName = "MERDY";
-        p2.login = "farof";
-        p2.password = "azerty";
-        p2.mail = "gfarof@gmail.com";
-        p2.klass = po;
-        p2.save();
+        Student pppp = new Student();
+        pppp.dateOfBirth = new Date(95 - randomGenerator.nextInt(11), randomGenerator.nextInt(11), randomGenerator.nextInt(11));
+        pppp.firstName = "Quentin";
+        pppp.lastName = "ADAM";
+        pppp.login = "waxzce";
+        pppp.password = "azerty";
+        pppp.mail = "waxzce@gmail.com";
+        pppp.klass = lklass.get(randomGenerator.nextInt(lklass.size()));
+
+        pppp.save();
+
+        for (Iterator<Campus> it = lc.iterator(); it.hasNext();) {
+            Campus campus = it.next();
+            Staff p = new Staff();
+            p.dateOfBirth = new Date(75 - randomGenerator.nextInt(11), randomGenerator.nextInt(11), randomGenerator.nextInt(11));
+            p.firstName = lprenoms.get(randomGenerator.nextInt(lprenoms.size()));
+            p.lastName = lnoms.get(randomGenerator.nextInt(lnoms.size()));
+            p.login = (p.firstName.substring(0, 1) + p.lastName).toLowerCase();
+            p.password = "azerty";
+            p.mail = p.login + "@globalcampus.com";
+            p.campus = campus;
+            p.save();
+        }
+
         /// user pherve
         Staff s = new Staff();
         s.dateOfBirth = new Date(70, 0, 1);
@@ -124,8 +180,8 @@ public class Bootstrap extends Job {
         s.password = "azerty";
         s.mail = "pherve@gmail.com";
         s.campus = c;
-        s.save();
 
+        s.save();
         Staff s2 = new Staff();
         s2.dateOfBirth = new Date(70, 0, 1);
         s2.firstName = "Josef";
@@ -134,8 +190,17 @@ public class Bootstrap extends Job {
         s2.password = "azerty";
         s2.mail = "jrousseau@gmail.com";
         s2.campus = c2;
+        for (int i = 0; i < 20; i++) {
+            Teacher p = new Teacher();
+            p.firstName = lprenoms.get(randomGenerator.nextInt(lprenoms.size()));
+            p.lastName = lnoms.get(randomGenerator.nextInt(lnoms.size()));
+            p.login = (p.firstName.substring(0, 1) + p.lastName).toLowerCase();
+            p.password = "azerty";
+            p.mail = p.login + "@globalcampus.com";
+            p.dateOfBirth = new Date(90 - randomGenerator.nextInt(11), randomGenerator.nextInt(11), randomGenerator.nextInt(11));
+            p.save();
+        }
         s2.save();
-
         Teacher tea = new Teacher();
         tea.dateOfBirth = new Date(70, 0, 1);
         tea.firstName = "Kevin";
@@ -143,8 +208,20 @@ public class Bootstrap extends Job {
         tea.login = "kdercher";
         tea.mail = "kdecherf@gmail.com";
         tea.password = "azerty";
+
         tea.save();
         /// user gpougne
+
+        for (int i = 0; i < 5; i++) {
+            GlobalStaff p = new GlobalStaff();
+            p.firstName = lprenoms.get(randomGenerator.nextInt(lprenoms.size()));
+            p.lastName = lnoms.get(randomGenerator.nextInt(lnoms.size()));
+            p.login = (p.firstName.substring(0, 1) + p.lastName).toLowerCase();
+            p.password = "azerty";
+            p.mail = p.login + "@globalcampus.com";
+            p.dateOfBirth = new Date(80 - randomGenerator.nextInt(11), randomGenerator.nextInt(11), randomGenerator.nextInt(11));
+            p.save();
+        }
         GlobalStaff gs = new GlobalStaff();
         gs.dateOfBirth = new Date(70, 0, 1);
         gs.firstName = "Gaetan";
@@ -152,68 +229,143 @@ public class Bootstrap extends Job {
         gs.login = "gpougne";
         gs.password = "azerty";
         gs.mail = "gpougne@gmail.com";
+
         gs.save();
-        Lesson lll = new Lesson();
-        lll.name = "Math";
-        lll.save();
 
-
-        Lesson linuxlesson = new Lesson();
-        linuxlesson.name = "Linux";
-        linuxlesson.save();
-        Lesson microsoftlesson = new Lesson();
-        microsoftlesson.name = "Microsoft";
-        microsoftlesson.save();
-        Lesson OracleLesson = new Lesson();
-        OracleLesson.name = "Oracle";
-        OracleLesson.save();
-        Lesson itlawlesson = new Lesson();
-        itlawlesson.name = "IT Law";
-        itlawlesson.save();
-
+        int thisyear = (new DateTime()).getYear();
+        int thismonth = (new DateTime()).getMonthOfYear();
+        int thisday = (new DateTime()).getDayOfMonth();
         //global event;
-        GlobalEvent ge = new GlobalEvent();
-        ge.name = "a GlobalEvent";
-        ge.description = "big test";
-        //    ge.interval = new Interval(new DateTime(), new DateTime((new DateTime()).getMillis() + (3600 * 1000)));
-        ge.start = (new DateTime()).getMillis();
-        ge.end = new DateTime((new DateTime()).getMillis() + (3600 * 1000)).getMillis();
+        for (int i = 0; i < 5; i++) {
+            GlobalEvent ge = new GlobalEvent();
+            ge.name = "CEO talk";
+            ge.description = "a talk";
+            //    ge.interval = new Interval(new DateTime(), new DateTime((new DateTime()).getMillis() + (3600 * 1000)));
+            DateTime dt = new DateTime(thisyear, thismonth + randomGenerator.nextInt(2), thisday + randomGenerator.nextInt(20), 9 + randomGenerator.nextInt(5), 0, 0, 0);
+            ge.start = dt.getMillis();
+            dt.plusHours(randomGenerator.nextInt(2));
+            ge.end = dt.getMillis();
 
-        ge.save();
+            ge.save();
+        }
+
         //campus event;
-        CampusEvent ce = new CampusEvent();
-        ce.campus = c;
-        ce.name = "a CampusEvent";
-        ce.description = "big test";
-        ce.start = (new DateTime()).getMillis();
-        ce.end = new DateTime((new DateTime()).getMillis() + (3600 * 1000)).getMillis();
-        ce.save();
-        //exam event;
-        ExamEvalEvent ee = new ExamEvalEvent();
-        ee.promo = pro;
-        ee.name = "a ExamEvent";
-        ee.description = "big test";
-        ee.start = (new DateTime()).getMillis();
-        ee.end = new DateTime((new DateTime()).getMillis() + (3600 * 1000)).getMillis();
-        ee.save();
-        //lesson event;
-        LessonEvent le = new LessonEvent();
-        le.klass = po;
-        le.name = "a LessonEvent";
-        le.lesson = lll;
-        le.start = (new DateTime()).getMillis();
-        le.end = new DateTime((new DateTime()).getMillis() + (3600 * 1000)).getMillis();
-        le.teacher = tea;
-        le.save();
-        //perso event;
-        PersoEvent per = new PersoEvent();
-        per.person = p;
-        per.name = "a PersoEvent";
-        per.description = "big test";
-        per.start = (new DateTime()).getMillis();
-        per.end = new DateTime((new DateTime()).getMillis() + (3600 * 1000)).getMillis();
-        per.save();
 
-        //     }
+        for (int i = 0; i < 20; i++) {
+            CampusEvent ge = new CampusEvent();
+            ge.name = "JPO";
+            ge.description = "jpo";
+            //    ge.interval = new Interval(new DateTime(), new DateTime((new DateTime()).getMillis() + (3600 * 1000)));
+            DateTime dt = new DateTime(thisyear, thismonth + randomGenerator.nextInt(2), thisday + randomGenerator.nextInt(20), 9 + randomGenerator.nextInt(5), 0, 0, 0);
+            ge.start = dt.getMillis();
+            dt.plusHours(randomGenerator.nextInt(2));
+            ge.end = dt.getMillis();
+            ge.campus = lc.get(randomGenerator.nextInt(lc.size()));
+            ge.save();
+        }
+
+        List<Lesson> listlesson = Lesson.findAll();
+
+        for (int i = 0; i < 30; i++) {
+            ExamEvalEvent ge = new ExamEvalEvent();
+            ge.lesson = listlesson.get(randomGenerator.nextInt(listlesson.size()));
+            ge.promo = lp.get(randomGenerator.nextInt(lp.size()));
+            //    ge.interval = new Interval(new DateTime(), new DateTime((new DateTime()).getMillis() + (3600 * 1000)));
+            DateTime dt = new DateTime(thisyear, thismonth + randomGenerator.nextInt(2), thisday + randomGenerator.nextInt(20), 9 + randomGenerator.nextInt(5), 0, 0, 0);
+            ge.start = dt.getMillis();
+            dt.plusHours(randomGenerator.nextInt(2));
+            ge.end = dt.getMillis();
+
+            ge.name = "SGES : " + ge.lesson.name;
+            ge.description = "sges for the " + ge.lesson.name;
+
+            ge.save();
+        }
+
+        List<Teacher> listTeacher = Teacher.findAll();
+        //lesson event;
+
+        for (int i = 0; i < 80; i++) {
+            LessonEvent ge = new LessonEvent();
+            ge.lesson = listlesson.get(randomGenerator.nextInt(listlesson.size()));
+            ge.teacher = listTeacher.get(randomGenerator.nextInt(listTeacher.size()));
+            ge.klass = lklass.get(randomGenerator.nextInt(lklass.size()));
+            int modeint = randomGenerator.nextInt(3);
+            switch (modeint) {
+                case 0:
+                    ge.mode = LessonMode.CM;
+                    break;
+                case 1:
+                    ge.mode = LessonMode.TD;
+                    break;
+                default:
+                    ge.mode = LessonMode.ELEARNING;
+            }
+            //    ge.interval = new Interval(new DateTime(), new DateTime((new DateTime()).getMillis() + (3600 * 1000)));
+            DateTime dt = new DateTime(thisyear, thismonth + randomGenerator.nextInt(2), thisday + randomGenerator.nextInt(20), 9 + randomGenerator.nextInt(5), 0, 0, 0);
+            ge.start = dt.getMillis();
+            dt.plusHours(randomGenerator.nextInt(2));
+            ge.end = dt.getMillis();
+
+            ge.name = "learn : " + ge.lesson.name;
+
+
+            ge.save();
+        }
+
+        List<Person> listofperson = Person.findAll();
+        for (int i = 0; i < 300; i++) {
+            PersoEvent ge = new PersoEvent();
+            ge.person = listofperson.get(randomGenerator.nextInt(listofperson.size()));
+
+            //    ge.interval = new Interval(new DateTime(), new DateTime((new DateTime()).getMillis() + (3600 * 1000)));
+            DateTime dt = new DateTime(thisyear, thismonth + randomGenerator.nextInt(2), thisday + randomGenerator.nextInt(20), 9 + randomGenerator.nextInt(5), 0, 0, 0);
+            ge.start = dt.getMillis();
+            dt.plusHours(randomGenerator.nextInt(2));
+            ge.end = dt.getMillis();
+
+            ge.name = "a personal think";
+            ge.description = "think about fish";
+
+
+            ge.save();
+        }
+        List<Student> liststudent = Student.findAll();
+        for (int i = 0; i < 100; i++) {
+            OralEvalEvent ge = new OralEvalEvent();
+            ge.student = liststudent.get(randomGenerator.nextInt(liststudent.size()));
+            ge.lesson = listlesson.get(randomGenerator.nextInt(listlesson.size()));
+
+            //    ge.interval = new Interval(new DateTime(), new DateTime((new DateTime()).getMillis() + (3600 * 1000)));
+            DateTime dt = new DateTime(thisyear, thismonth + randomGenerator.nextInt(2), thisday + randomGenerator.nextInt(20), 9 + randomGenerator.nextInt(5), 0, 0, 0);
+            ge.start = dt.getMillis();
+            dt.plusHours(randomGenerator.nextInt(2));
+            ge.end = dt.getMillis();
+
+            ge.name = "ORAL : " + ge.lesson.name;
+            ge.description = "test it";
+
+
+            ge.save();
+        }
+
+        for (int i = 0; i < 100; i++) {
+            PracticalEvalEvent ge = new PracticalEvalEvent();
+            ge.klass = lklass.get(randomGenerator.nextInt(lklass.size()));
+            ge.lesson = listlesson.get(randomGenerator.nextInt(listlesson.size()));
+
+            //    ge.interval = new Interval(new DateTime(), new DateTime((new DateTime()).getMillis() + (3600 * 1000)));
+            DateTime dt = new DateTime(thisyear, thismonth + randomGenerator.nextInt(2), thisday + randomGenerator.nextInt(20), 9 + randomGenerator.nextInt(5), 0, 0, 0);
+            ge.start = dt.getMillis();
+            dt.plusHours(randomGenerator.nextInt(2));
+            ge.end = dt.getMillis();
+
+            ge.name = "TP : " + ge.lesson.name;
+            ge.description = "fear";
+
+
+            ge.save();
+        }
+
     }
 }
