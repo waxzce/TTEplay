@@ -1,33 +1,28 @@
 #{extends 'main.html' /}
 #{set title:'my calendar' /}
-<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="@{'/public/fullcalendar/fullcalendar.css'}">
 <script type="text/javascript" src="@{'/public/fullcalendar/fullcalendar.js'}"></script>
 <script type="text/javascript">
 	
-	var events = '${calendar}';
+    var events = '${calendar}';
 
-	events = JSON.parse(events.replace(new RegExp("&quot;", "g"), '"'));
-=======
-<h2>My calendar</h2>
-{%
->>>>>>> mqueneau/master
+    events = JSON.parse(events.replace(new RegExp("&quot;", "g"), '"'));
 
-	$(document).ready(function () {
-		$('#calendar').fullCalendar({
-			events: events
-		});
-	});
+
+    $(document).ready(function () {
+        $('#calendar').fullCalendar({
+            events: events
+        });
+    });
 </script>
 
 
-<h3>${user.firstName}</h3>
-
+<h2>My calendar</h2>
 <div id="calendar">
 </div>
 
 <ul>
-#{list items:calendar, as:'event'}
+    #{list items:calendar, as:'event'}
     <li>${event.start}</li>
-#{/list}
+    #{/list}
 </ul>
