@@ -37,6 +37,9 @@ public class Bootstrap extends Job {
         Campus c = new Campus();
         c.name = "Nantes";
         c.save();
+        Campus c2 = new Campus();
+        c2.name = "Tours";
+        c2.save();
         // promo M1
         Promo pro = new Promo();
         pro.name = "M1";
@@ -77,6 +80,16 @@ public class Bootstrap extends Job {
         s.mail = "pherve@gmail.com";
         s.campus = c;
         s.save();
+
+        Staff s2 = new Staff();
+        s2.dateOfBirth = new Date(70, 0, 1);
+        s2.firstName = "Josef";
+        s2.lastName = "ROUSSEAU";
+        s2.login = "jrousseau";
+        s2.password = "azerty";
+        s2.mail = "jrousseau@gmail.com";
+        s2.campus = c2;
+        s2.save();
         /// user gpougne
         GlobalStaff gs = new GlobalStaff();
         gs.dateOfBirth = new Date(70, 0, 1);

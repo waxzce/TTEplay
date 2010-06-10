@@ -15,7 +15,7 @@
         <select id="object_klass" name="object.klass@id">
             <option value="">(None)</option>
 	        #{list items:models.Klass.findAll(), as:'klass'}
-            <option value="${klass.id}">${klass.name} | ${klass.promo.name} | ${klass.campus.name}</option>
+            <option value="${klass.id}" selected="$(object.klass.id == klass.id ? 'true' : 'false')">${klass.name} | ${klass.promo.name} | ${klass.campus.name}</option>
 	        #{/list}
         </select>
 
